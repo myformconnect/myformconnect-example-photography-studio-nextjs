@@ -5,7 +5,7 @@ export const siteConfig = {
     eyebrow: 'INDEPENDENT PHOTOGRAPHY & FILM STUDIO',
     year: '2026',
     emailPlaceholder: 'hello@stillframestudio.com',
-    instagramPlaceholder: 'https://instagram.com/stillframestudio',
+    instagramPlaceholder: 'https://instagram.com/',
     copyright: '© 2026 Stillframe Studio. All rights reserved.',
   },
 
