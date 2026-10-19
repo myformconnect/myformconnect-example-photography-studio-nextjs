@@ -1,0 +1,458 @@
+/* Stillframe Studio — Custom MyFormConnect Booking Widget Styles */
+:root {
+  --theme-color: #8B7355;
+  --theme-hover: #735E44;
+  --theme-glow: rgba(139, 115, 85, 0.25);
+  --theme-btn-text: #FFFFFF;
+  --widget-bg: #1E1E1B;
+  --widget-border: #383834;
+  --widget-radius: 4px;
+  --widget-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  --widget-max-width: 520px;
+  --widget-font: var(--font-sans), 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --widget-text-main: #F7F5F0;
+  --widget-text-body: #DCD9D1;
+  --widget-text-muted: #8F8D84;
+  --input-bg: #282824;
+  --input-border: #383834;
+  --input-radius: 2px;
+  --btn-radius: 2px;
+}
+
+.bw-page {
+  min-height: 100vh;
+  background: transparent;
+  padding: 1rem 0;
+}
+.bw-page__inner {
+  max-width: 32rem;
+  margin: 0 auto;
+}
+.bw-widget,
+.bw-popup__panel,
+.bw-times__grid {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-color) #181816;
+}
+
+.bw-widget::-webkit-scrollbar,
+.bw-popup__panel::-webkit-scrollbar,
+.bw-times__grid::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.bw-widget::-webkit-scrollbar-track,
+.bw-popup__panel::-webkit-scrollbar-track,
+.bw-times__grid::-webkit-scrollbar-track {
+  background: #181816;
+  border-radius: 9999px;
+}
+
+.bw-widget::-webkit-scrollbar-thumb,
+.bw-popup__panel::-webkit-scrollbar-thumb,
+.bw-times__grid::-webkit-scrollbar-thumb {
+  background-color: var(--theme-color);
+  border-radius: 9999px;
+  border: 1px solid #181816;
+}
+
+.bw-widget::-webkit-scrollbar-thumb:hover,
+.bw-popup__panel::-webkit-scrollbar-thumb:hover,
+.bw-times__grid::-webkit-scrollbar-thumb:hover {
+  background-color: var(--theme-hover);
+}
+
+.bw-step--hidden {
+  display: none !important;
+}
+.bw-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--widget-border);
+}
+.bw-header__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.5rem;
+}
+.bw-header__heading {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-family: var(--font-serif), 'Cormorant Garamond', Georgia, serif;
+  color: var(--widget-text-main);
+}
+.bw-header__meta:before {
+  content: "•";
+  margin-right: 0.5rem;
+  color: var(--theme-color);
+}
+.bw-header__meta {
+  font-size: 0.875rem;
+  color: var(--widget-text-muted);
+}
+.bw-back {
+  border: 0;
+  background: none;
+  color: var(--widget-text-muted);
+  font-size: 0.8125rem;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.bw-back:hover {
+  color: var(--theme-color);
+}
+.bw-calendar__nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+}
+.bw-calendar__month {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  color: var(--widget-text-main);
+  justify-self: center;
+  font-size: 0.9375rem;
+}
+.bw-calendar__tz {
+  grid-column: 1 / -1;
+  justify-self: end;
+  font-size: 0.75rem;
+  color: var(--widget-text-muted);
+}
+.bw-calendar__arrow {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--widget-border);
+  border-radius: var(--input-radius);
+  background: var(--input-bg);
+  color: var(--widget-text-main);
+  cursor: pointer;
+  font-size: 1.125rem;
+  line-height: 1;
+  transition: border-color 0.2s, color 0.2s;
+}
+.bw-calendar__arrow:hover:not(:disabled) {
+  border-color: var(--theme-color);
+  color: var(--theme-color);
+}
+.bw-calendar__arrow:disabled {
+  color: #4D4B43;
+  border-color: #2E2E2A;
+  background: #1A1A18;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.bw-calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--widget-text-muted);
+}
+.bw-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+.bw-calendar__status {
+  grid-column: 1 / -1;
+  margin: 0.5rem 0 0;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--widget-text-muted);
+  background: #282824;
+  border-radius: var(--input-radius);
+}
+.bw-calendar__status--error {
+  color: #F87171;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.bw-day {
+  aspect-ratio: 1;
+  min-height: 2.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--input-radius);
+  background: transparent;
+  font-size: 0.875rem;
+  color: var(--widget-text-main);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.bw-day:hover:not(:disabled) {
+  background: #2E2E2A;
+  border-color: var(--theme-color);
+}
+.bw-day--empty {
+  visibility: hidden;
+  pointer-events: none;
+}
+.bw-day--disabled {
+  color: #4D4B43;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+.bw-day--selected {
+  background: var(--theme-color) !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+}
+.bw-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: var(--theme-color);
+  flex-shrink: 0;
+}
+.bw-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--widget-border);
+}
+.bw-footer--split {
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.bw-footer__selected {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--widget-text-body);
+}
+.bw-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 0;
+  border-radius: var(--btn-radius);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.75rem 1.25rem;
+  transition: background 0.2s, opacity 0.2s;
+  letter-spacing: 0.02em;
+}
+.bw-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.bw-btn--primary {
+  background: var(--theme-color);
+  color: #FFFFFF;
+}
+.bw-btn--primary:hover:not(:disabled) {
+  background: var(--theme-hover);
+}
+.bw-btn--secondary {
+  background: #282824;
+  color: var(--widget-text-main);
+  border: 1px solid var(--widget-border);
+}
+.bw-btn--secondary:hover {
+  border-color: var(--theme-color);
+  color: var(--theme-color);
+}
+.bw-btn--full {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.bw-times__heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--widget-text-main);
+}
+.bw-times__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.625rem;
+}
+.bw-time {
+  border: 1px solid var(--widget-border);
+  border-radius: var(--input-radius);
+  background: var(--input-bg);
+  padding: 0.625rem 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--widget-text-main);
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+.bw-time:hover {
+  border-color: var(--theme-color);
+}
+.bw-time--selected {
+  border-color: var(--theme-color);
+  background: rgba(139, 115, 85, 0.2);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+.bw-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--widget-border);
+  border-radius: var(--input-radius);
+  background: #282824;
+}
+.bw-summary__datetime {
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  color: var(--widget-text-main);
+  font-size: 0.9375rem;
+}
+.bw-summary__description {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--widget-text-muted);
+}
+.bw-summary__change {
+  border: 0;
+  background: none;
+  color: var(--theme-color);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.bw-field {
+  display: block;
+  margin-bottom: 1rem;
+}
+.bw-field__label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--widget-text-main);
+}
+.bw-required {
+  color: #D97706;
+}
+.bw-field__input-wrap {
+  position: relative;
+  display: block;
+}
+.bw-field__icon {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--widget-text-muted);
+  pointer-events: none;
+}
+.bw-field__input {
+  width: 100%;
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  padding: 0.75rem 0.875rem 0.75rem 2.5rem;
+  font-size: 0.9375rem;
+  color: var(--widget-text-main);
+  background: var(--input-bg);
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+.bw-field__input--plain {
+  padding-left: 0.875rem;
+}
+.bw-field__textarea {
+  display: block;
+  width: 100%;
+  min-height: 5rem;
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-radius);
+  padding: 0.75rem 0.875rem;
+  font-size: 0.9375rem;
+  font-family: inherit;
+  color: var(--widget-text-main);
+  background: var(--input-bg);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.bw-field__input:focus,
+.bw-field__textarea:focus {
+  border-color: var(--theme-color);
+}
+.bw-form__error {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.875rem;
+  border-radius: var(--input-radius);
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #F87171;
+  font-size: 0.875rem;
+}
+.bw-success {
+  text-align: center;
+  padding: 1rem 0 0.5rem;
+}
+.bw-success__icon svg {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 auto 1rem;
+  color: #86EFAC;
+}
+.bw-success__title {
+  margin: 0 0 0.75rem;
+  font-size: 1.375rem;
+  font-weight: 500;
+  font-family: var(--font-serif), Georgia, serif;
+  color: var(--widget-text-main);
+}
+.bw-success__message {
+  margin: 0 0 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--widget-text-body);
+}
+.bw-powered {
+  display: none !important;
+}
+.bw-powered__brand {
+  color: var(--theme-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+.bw-powered__brand:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .bw-times__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bw-widget {
+    padding: 1.25rem;
+  }
+}
