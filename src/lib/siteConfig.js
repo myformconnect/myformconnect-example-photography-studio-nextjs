@@ -125,9 +125,21 @@ export const siteConfig = {
   },
 
   seo: {
-    title: 'Stillframe Studio | Photography & Cinematic Films',
+    title: 'Stillframe Studio — Photography & Cinematic Films',
     description:
-      'Photography and filmmaking for weddings, portraits, fashion, brands, and events. Tell Stillframe Studio about your next project.',
-    canonicalUrl: 'https://stillframestudio.com',
+      'Boutique photography and filmmaking studio capturing honest weddings, editorial portraits, and brand stories. Enquire with Stillframe Studio for 2026 dates.',
+    canonicalUrl: 'https://stillframestudio.vercel.app',
+    siteUrl: 'https://stillframestudio.vercel.app',
+    ogImage: '/images/hero-editorial.jpg',
+    ogImageAlt: 'Stillframe Studio editorial photography master frame',
+    keywords: [
+      'photography studio',
+      'cinematic wedding films',
+      'editorial portrait photography',
+      'fashion photography',
+      'commercial brand films',
+      'event photographer',
+      'independent creative studio',
+    ],
   },
 };

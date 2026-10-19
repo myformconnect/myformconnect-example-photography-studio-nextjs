@@ -19,21 +19,38 @@ const dmSans = DM_Sans({
 export const metadata = {
   title: siteConfig.seo.title,
   description: siteConfig.seo.description,
-  metadataBase: new URL('https://stillframestudio.com'),
+  metadataBase: new URL('https://stillframestudio.vercel.app'),
   alternates: {
-    canonical: '/',
+    canonical: 'https://stillframestudio.vercel.app',
+  },
+  authors: [{ name: siteConfig.brand.name, url: 'https://stillframestudio.vercel.app' }],
+  creator: siteConfig.brand.name,
+  publisher: siteConfig.brand.name,
+  keywords: siteConfig.seo.keywords,
+  category: 'photography',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
     title: siteConfig.seo.title,
     description: siteConfig.seo.description,
-    url: 'https://stillframestudio.com',
+    url: 'https://stillframestudio.vercel.app',
     siteName: siteConfig.brand.name,
     images: [
       {
         url: '/images/hero-editorial.jpg',
         width: 1200,
-        height: 800,
-        alt: siteConfig.hero.imageAlt,
+        height: 630,
+        type: 'image/jpeg',
+        alt: siteConfig.seo.ogImageAlt,
       },
     ],
     locale: 'en_US',
@@ -43,10 +60,19 @@ export const metadata = {
     card: 'summary_large_image',
     title: siteConfig.seo.title,
     description: siteConfig.seo.description,
-    images: ['/images/hero-editorial.jpg'],
+    images: [
+      {
+        url: '/images/hero-editorial.jpg',
+        width: 1200,
+        height: 630,
+        alt: siteConfig.seo.ogImageAlt,
+      },
+    ],
   },
   icons: {
     icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
   },
 };
 
@@ -56,9 +82,25 @@ export const viewport = {
   initialScale: 1,
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: siteConfig.brand.name,
+  url: 'https://stillframestudio.vercel.app',
+  image: 'https://stillframestudio.vercel.app/images/hero-editorial.jpg',
+  description: siteConfig.seo.description,
+  sameAs: [siteConfig.brand.instagramPlaceholder],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );
