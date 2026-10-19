@@ -5,52 +5,53 @@
 // Active environment: 'staging' or 'production'
 export const FORM_ENV = process.env.NEXT_PUBLIC_FORM_ENV || 'staging';
 
-// Default URLs
-const DEFAULT_STAGING_URL = 'https://staging.myformcapture.com/f/6506e87c-d573-497a-84c3-7a407b395658';
-const DEFAULT_PRODUCTION_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
+// Scheduling form action URL (staging)
+const SCHEDULING_FORM_ACTION_URL = 'https://staging.myformcapture.com/f/6506e87c-d573-497a-84c3-7a407b395658';
+// General form action URL (production)
+const GENERAL_FORM_ACTION_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
 
 export const formEndpoints = {
   // General forms (Enquiry & Exit-intent)
   general: {
     staging:
       process.env.NEXT_PUBLIC_FORM_STAGING_URL ||
-      DEFAULT_PRODUCTION_URL,
+      GENERAL_FORM_ACTION_URL,
     production:
       process.env.NEXT_PUBLIC_FORM_PRODUCTION_URL ||
-      DEFAULT_PRODUCTION_URL,
+      GENERAL_FORM_ACTION_URL,
   },
 
-  // Scheduling form
+  // Scheduling form (uses staging action URL)
   scheduling: {
     staging:
       process.env.NEXT_PUBLIC_SCHEDULING_STAGING_URL ||
       process.env.NEXT_PUBLIC_FORM_STAGING_URL ||
-      DEFAULT_STAGING_URL,
+      SCHEDULING_FORM_ACTION_URL,
     production:
       process.env.NEXT_PUBLIC_SCHEDULING_PRODUCTION_URL ||
-      DEFAULT_STAGING_URL,
+      SCHEDULING_FORM_ACTION_URL,
   },
 
   // Contact form
   contact: {
     staging:
       process.env.NEXT_PUBLIC_CONTACT_STAGING_URL ||
-      DEFAULT_PRODUCTION_URL,
+      GENERAL_FORM_ACTION_URL,
     production:
       process.env.NEXT_PUBLIC_CONTACT_PRODUCTION_URL ||
       process.env.NEXT_PUBLIC_FORM_PRODUCTION_URL ||
-      DEFAULT_PRODUCTION_URL,
+      GENERAL_FORM_ACTION_URL,
   },
 
   // Newsletter form
   newsletter: {
     staging:
       process.env.NEXT_PUBLIC_NEWSLETTER_STAGING_URL ||
-      DEFAULT_PRODUCTION_URL,
+      GENERAL_FORM_ACTION_URL,
     production:
       process.env.NEXT_PUBLIC_NEWSLETTER_PRODUCTION_URL ||
       process.env.NEXT_PUBLIC_FORM_PRODUCTION_URL ||
-      DEFAULT_PRODUCTION_URL,
+      GENERAL_FORM_ACTION_URL,
   },
 };
 
@@ -69,7 +70,7 @@ export function getFormEndpoint(formType = 'general') {
 
   const group = formEndpoints[formType] || formEndpoints.general;
   const isProd = FORM_ENV === 'production';
-  const defaultFallback = formType === 'scheduling' ? DEFAULT_STAGING_URL : DEFAULT_PRODUCTION_URL;
+  const defaultFallback = formType === 'scheduling' ? SCHEDULING_FORM_ACTION_URL : GENERAL_FORM_ACTION_URL;
   return (isProd ? group.production : group.staging) || defaultFallback;
 }
 
@@ -77,7 +78,7 @@ export function getFormEndpoint(formType = 'general') {
  * Scheduling widget configuration
  */
 export function getSchedulingConfig() {
-  const actionUrl = getFormEndpoint('scheduling') || DEFAULT_STAGING_URL;
+  const actionUrl = getFormEndpoint('scheduling') || SCHEDULING_FORM_ACTION_URL;
   const rawUrl = (actionUrl || '').trim();
   const uuidMatch = rawUrl.match(/[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/);
   const uuid = uuidMatch ? uuidMatch[0] : '6506e87c-d573-497a-84c3-7a407b395658';

@@ -5,8 +5,8 @@ import { siteConfig } from '@/lib/siteConfig';
 import { getFormEndpoint, submitMFCForm } from '@/lib/formConfig';
 import { openBookingModal, openContactModal } from '@/components/GlobalModals';
 
-// Fallback endpoint
-const HARDCODED_ENQUIRY_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
+// Enquiry form action URL
+const ENQUIRY_FORM_ACTION_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
 
 export default function EnquirySection() {
   const { enquiry } = siteConfig;
@@ -76,7 +76,7 @@ export default function EnquirySection() {
       return;
     }
 
-    const endpoint = getFormEndpoint('general') || HARDCODED_ENQUIRY_URL;
+    const endpoint = getFormEndpoint('general') || ENQUIRY_FORM_ACTION_URL;
     if (!endpoint) {
       setStatus('error');
       setErrorMessage(

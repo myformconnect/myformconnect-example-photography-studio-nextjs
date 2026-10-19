@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { getFormEndpoint, submitMFCForm } from '@/lib/formConfig';
 
-// Fallback endpoint
-const HARDCODED_EXIT_INTENT_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
+// Exit intent form action URL
+const EXIT_INTENT_FORM_ACTION_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
 
 export default function ExitIntentPopup({ hasOtherModalOpen = false }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -143,7 +143,7 @@ export default function ExitIntentPopup({ hasOtherModalOpen = false }) {
     setErrorMessage('');
 
     try {
-      const endpoint = getFormEndpoint('general') || HARDCODED_EXIT_INTENT_URL;
+      const endpoint = getFormEndpoint('general') || EXIT_INTENT_FORM_ACTION_URL;
       const dataToSend = new FormData();
       dataToSend.append('name', formData.name.trim());
       dataToSend.append('email', formData.email.trim());

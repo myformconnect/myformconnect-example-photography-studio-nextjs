@@ -4,19 +4,19 @@ import { useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { getSchedulingConfig } from '@/lib/formConfig';
 
-// Fallback scheduling config
-const HARDCODED_BOOKING_UUID = '6506e87c-d573-497a-84c3-7a407b395658';
-const HARDCODED_BOOKING_API_BASE = 'https://staging.myformcapture.com';
-const HARDCODED_BOOKING_SUBMIT_URL = 'https://staging.myformcapture.com/f/6506e87c-d573-497a-84c3-7a407b395658';
-const HARDCODED_BOOKING_SLOTS_URL = 'https://staging.myformcapture.com/f/6506e87c-d573-497a-84c3-7a407b395658/slots';
+// Scheduling form action URL & widget configuration
+const SCHEDULING_FORM_UUID = '6506e87c-d573-497a-84c3-7a407b395658';
+const SCHEDULING_FORM_API_BASE = 'https://staging.myformcapture.com';
+const SCHEDULING_FORM_ACTION_URL = 'https://staging.myformcapture.com/f/6506e87c-d573-497a-84c3-7a407b395658';
+const SCHEDULING_FORM_SLOTS_URL = 'https://staging.myformcapture.com/f/6506e87c-d573-497a-84c3-7a407b395658/slots';
 
 export default function BookingModal({ isOpen, onClose }) {
   const modalRef = useRef(null);
   const schedulingConfig = getSchedulingConfig();
-  const uuid = schedulingConfig.uuid || HARDCODED_BOOKING_UUID;
-  const apiBase = schedulingConfig.apiBase || HARDCODED_BOOKING_API_BASE;
-  const submitUrl = schedulingConfig.submitUrl || HARDCODED_BOOKING_SUBMIT_URL;
-  const slotsUrl = schedulingConfig.slotsUrl || HARDCODED_BOOKING_SLOTS_URL;
+  const uuid = schedulingConfig.uuid || SCHEDULING_FORM_UUID;
+  const apiBase = schedulingConfig.apiBase || SCHEDULING_FORM_API_BASE;
+  const submitUrl = schedulingConfig.submitUrl || SCHEDULING_FORM_ACTION_URL;
+  const slotsUrl = schedulingConfig.slotsUrl || SCHEDULING_FORM_SLOTS_URL;
 
   // Close on Escape
   useEffect(() => {

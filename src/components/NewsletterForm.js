@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import { getFormEndpoint, submitMFCForm } from '@/lib/formConfig';
 
-// Fallback endpoint
-const HARDCODED_NEWSLETTER_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
+// Newsletter form action URL
+const NEWSLETTER_FORM_ACTION_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
 
 export default function NewsletterForm() {
   const [email, setEmail] = useState('');
@@ -31,7 +31,7 @@ export default function NewsletterForm() {
     setErrorMessage('');
 
     try {
-      const endpoint = getFormEndpoint('newsletter') || HARDCODED_NEWSLETTER_URL;
+      const endpoint = getFormEndpoint('newsletter') || NEWSLETTER_FORM_ACTION_URL;
       const dataToSend = new FormData();
       dataToSend.append('email', cleanEmail);
       dataToSend.append('_form_type', 'newsletter');

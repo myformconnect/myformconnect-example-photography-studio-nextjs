@@ -3,8 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { getFormEndpoint, submitMFCForm } from '@/lib/formConfig';
 
-// Fallback endpoint
-const HARDCODED_CONTACT_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
+// Contact form action URL
+const CONTACT_FORM_ACTION_URL = 'https://myformcapture.com/f/95dcab67-a579-4a81-9f23-e005ff8204fd';
 
 export default function ContactModal({ isOpen, onClose }) {
   const modalRef = useRef(null);
@@ -78,7 +78,7 @@ export default function ContactModal({ isOpen, onClose }) {
     setErrorMessage('');
 
     try {
-      const endpoint = getFormEndpoint('contact') || HARDCODED_CONTACT_URL;
+      const endpoint = getFormEndpoint('contact') || CONTACT_FORM_ACTION_URL;
       const dataToSend = new FormData();
       dataToSend.append('name', formData.name.trim());
       dataToSend.append('email', formData.email.trim());

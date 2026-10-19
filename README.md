@@ -40,7 +40,7 @@ Key variables:
 - `NEXT_PUBLIC_FORM_STAGING_URL` / `NEXT_PUBLIC_FORM_PRODUCTION_URL`: General forms (Enquiry & Exit Intent).
 - `NEXT_PUBLIC_SCHEDULING_STAGING_URL` / `NEXT_PUBLIC_SCHEDULING_PRODUCTION_URL`: Booking widget endpoint.
 
-Hardcoded fallbacks are configured across components so forms remain functional if environment variables are omitted.
+Components configure default form action URLs so all forms function out of the box even without environment variables (scheduling uses the staging URL; other forms use the standard action URL).
 
 ## Project Structure
 
