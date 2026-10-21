@@ -96,6 +96,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable}`}>
       <head>
+        <meta name="google-site-verification" content="G6260ua08PUBGFeIVXoiVPpZTfH-Lyfyl2FyCYKrqIo" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
